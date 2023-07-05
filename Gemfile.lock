@@ -1,0 +1,27 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.8.4)
+      public_suffix (>= 2.0.2, < 6.0)
+    csv (3.2.7)
+    faraday (0.17.6)
+      multipart-post (>= 1.2, < 3)
+    launchy (2.5.2)
+      addressable (~> 2.8)
+    multipart-post (2.3.0)
+    public_suffix (5.0.1)
+    rbplotly (0.1.2)
+      faraday (~> 0.9)
+      launchy (~> 2.4)
+      uuidtools (~> 2.1)
+    uuidtools (2.2.0)
+
+PLATFORMS
+  x64-mingw32
+
+DEPENDENCIES
+  csv (~> 3.2)
+  rbplotly (~> 0.1.2)
+
+BUNDLED WITH
+   2.4.15
