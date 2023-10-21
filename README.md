@@ -16,7 +16,7 @@ git clone git@github.com/sueswe/plot_runcmd.git
 cd plot_runcmd
 bundle
 scp <user>@<machine>:~/runcmd_logging_rzomstp/runcmd*2023*.csv data/
-bash rohdaten.sh binary_name
+bash preprocessing.sh binary_name
 ruby charting.rb output_filename
 ~~~~
 
