@@ -2,12 +2,47 @@
 
 require 'rbplotly'
 require 'csv'
+require 'colorize'
+require 'optparse'
 
-title = ARGV[0]
-if ARGV.length < 1
-  puts "Too few arguments: Title missing."
-  exit 23
+
+myname = File.basename(__FILE__)
+options = {}
+optparse = OptionParser.new do |opts|
+  opts.banner = "Usage: #{myname} [options]"
+
+  options[:t] = nil
+  opts.on('-t ', '--title', 'Plot title.') do |x|
+    options[:t] = x
+  end
 end
+optparse.parse!
+
+
+if options[:t].nil?
+  puts optparse
+  exit 1
+end
+title = options[:t].to_s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 f = 'data/x-y.csv'
 

@@ -17,7 +17,7 @@ cd plot_runcmd
 bundle
 scp <user>@<machine>:~/runcmd_logging_rzomstp/runcmd*2023*.csv data/
 bash preprocessing.sh binary_name
-ruby charting.rb output_filename
+ruby charting.rb -t output_filename
 ~~~~
 
 
