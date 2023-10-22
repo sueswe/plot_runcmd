@@ -9,15 +9,19 @@ Plot data (from runcmd) with ruby.
 
 * Sourcefiles: $HOME/runcmd_logging_rzomstp/runcmd*.csv
 
+
 ## Step-by-step
 
 ~~~~
 git clone git@github.com/sueswe/plot_runcmd.git
 cd plot_runcmd
 bundle
+
+# get source files:
 scp <user>@<machine>:~/runcmd_logging_rzomstp/runcmd*2023*.csv data/
-bash preprocessing.sh binary_name
-ruby charting.rb -t output_filename
+
+# generate plot:
+ruby charting.rb -t output_filename -p program_name
 ~~~~
 
 
