@@ -3,12 +3,14 @@ GEM
   specs:
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
+    colorize (1.1.0)
     csv (3.2.7)
     faraday (0.17.6)
       multipart-post (>= 1.2, < 3)
     launchy (2.5.2)
       addressable (~> 2.8)
     multipart-post (2.3.0)
+    optparse (0.3.1)
     public_suffix (5.0.1)
     rbplotly (0.1.2)
       faraday (~> 0.9)
@@ -22,7 +24,9 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  colorize (~> 1.1)
   csv (~> 3.2)
+  optparse (~> 0.3.1)
   rbplotly (~> 0.1.2)
 
 BUNDLED WITH
