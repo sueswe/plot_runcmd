@@ -12,16 +12,22 @@ Plot data (from runcmd) with ruby.
 
 ## Step-by-step
 
-~~~~
+~~~
 git clone git@github.com/sueswe/plot_runcmd.git
 cd plot_runcmd
 bundle
+~~~
 
-# get source files:
+* get source files:
+
+~~~
 scp <user>@<machine>:~/runcmd_logging_rzomstp/runcmd*2023*.csv data/
+~~~
 
-# generate plot:
-ruby charting.rb -t output_filename -p program_name
-~~~~
+* generate plot:
 
+~~~
+ruby charting.rb -t plot-title  -p program_name
+~~~
 
+.
