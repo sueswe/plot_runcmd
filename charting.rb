@@ -40,6 +40,8 @@ if options[:p].nil?
 end
 programName = options[:p].to_s
 
+
+
 $data_files = 'data/runcmd*.csv'
 $csv_file = 'data/x-y.csv'
 
@@ -51,12 +53,9 @@ p programName
 class Preprocessor
 
   def cleaner_to_datafiles(name_of_program)
-    puts "writing clean data-file, looking for \"#{name_of_program}\""
-    # grep -i $programm runcmd_202?-*.csv |sed 's/ //g' > ${programm}.data
-    
+    puts "writing clean data-file, looking for \"#{name_of_program}\""    
     # array for lines:
     hits = []
-
     # 1) glob files
     Dir.glob($data_files).each do |datafile| 
       # 2) loop through files and get lines:
@@ -74,19 +73,38 @@ class Preprocessor
       end
       puts "#{c} lines searched in #{datafile}".yellow
     end
-    # write name_of_program.data:
+    puts "write data/#{name_of_program}.data:".cyan
     df = File.open("data/#{name_of_program}.data", "w")
     hits.each do |l|
       df.write("#{l}")
     end
     df.close
-
+    puts "done.".green
   end
 
   
-  def generate_data_points_to_csv
+  def generate_data_points_to_csv(name_of_program)
     puts "writing datapoints to a csv-like file"
     # grep $programm ${programm}.data |  sed 's/t(s)://g' | awk -F';' '{print $2 " ; " $6  }' > x-y.csv
+    help_array = []
+    r = File.open("data/#{name_of_program}.data")
+    r.each_line do |line|
+      a = line.split(';')
+      b = a[5].split(':')
+      
+      csv = a[1] + " ; " + b[1] 
+      puts csv
+      help_array.push(csv)
+    end
+    r.close
+
+    puts "writing data array to csv #{$csv_file}:".yellow
+    csv = File.open($csv_file , "w")
+    help_array.each do |l|
+      csv.write("#{l}\n")
+    end
+    csv.close
+    puts "done.".green
   end
 
 end
@@ -99,18 +117,10 @@ clean = Preprocessor.new
 clean.cleaner_to_datafiles programName 
 
 gen = Preprocessor.new
-gen.generate_data_points_to_csv
+gen.generate_data_points_to_csv programName
 
 
-exit 0
-
-
-
-
-
-
-
-
+# exit 0
 
 
 x = []
@@ -131,5 +141,6 @@ trace1 = {
 
 plot = Plotly::Plot.new(data: [trace1])
 plot.layout.title = "#{title}"
+puts "plotting to ./#{title}_plot.html ...".yellow
 plot.generate_html(path: "./#{title}_plot.html")
 
